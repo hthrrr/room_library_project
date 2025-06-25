@@ -27,7 +27,7 @@ const orderSchema = mongoose.Schema({
     user: String
 })
 
-const Order = mongoose.model("Order", orderSchema)
+const Orders = mongoose.model("Order", orderSchema)
 const Settings = mongoose.model("Settings", SettingsSchema)
 
-module.exports = {Settings, Order}
+module.exports = {Settings, Orders}
