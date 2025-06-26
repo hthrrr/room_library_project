@@ -3,7 +3,7 @@ const {Settings, Orders} = require('../db/schemas')
 
 const router =  express.Router()
 
-router.post('/make_order', async (req, res) => {
+router.post('/order_room', async (req, res) => {
     try {
         const room = req.body.room
         //implement webscarper func that roders room
