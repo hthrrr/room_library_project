@@ -1,13 +1,16 @@
 const express = require('express')
 const {Settings, Orders} = require('../db/schemas')
+const orderRoom = require('../controller/web_scraper')
 
 const router =  express.Router()
 
 router.post('/order_room', async (req, res) => {
     try {
+
+        console.log('order_room api call')
         const room = req.body.room
         //implement webscarper func that roders room
-        const status = await make_order(room)
+        const status = await orderRoom(room)
         //add room to db with the status failed or succeeded
         
     }

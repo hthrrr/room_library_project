@@ -58,4 +58,4 @@ router.post('/create_settings', (req, res) => {
     res.status(200).json({message: "Settings created successfully"})
 })
 
-Module.exports = router
+module.exports = router
