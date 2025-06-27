@@ -2,6 +2,10 @@ const express = require('express');
 const connectDB = require('./config/db');
 const settingsRouter = require('./routes/settings.routes');
 const orderRouter = require('./routes/order.routes');
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const app = express();
 

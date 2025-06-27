@@ -1,9 +1,14 @@
 const puppeteer = require('puppeteer');
-
+const dotenv = require('dotenv');
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+const uniUsername = dotenv.proccess
+
 const orderRoom = async (roomId, unixDate) => {
+    const password = process.env.UNI_PASSWORD
+    const username = process.env.UNI_USERNAME
+    
     console.log('ordering room number - ' + roomId + "at unix time - " + unixDate)
     try {
         const browser = await puppeteer.launch({
@@ -21,8 +26,8 @@ const orderRoom = async (roomId, unixDate) => {
         console.log('Page loaded');
 
         //login
-        await page.type('#email', 'yairb2');
-        await page.type('#password', '246810yY12');
+        await page.type('#email', username);
+        await page.type('#password', password);
         await page.click('button[name="login"]');
         console.log('Login clicked');
 
