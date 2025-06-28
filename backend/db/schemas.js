@@ -1,33 +1,28 @@
 const mongoose = require("mongoose")
 
-const SettingsSchema = mongoose.Schema({
-    
-    orders: {
-        type: [{
-            // Define your dictionary structure here
-            room: String,
-            hour: String,
-            day: String
-        }],
-        default: [],
-        required: true
-    },
-    user: {
-        type: String,
-        required: true  
-    }
-
+const userSchema = mongoose.Schema({
+    username: String,
+    password: String,
+    uniusername: String,
+    unipassword: String,
+    personalData: { email: String, phone: String },
+    recurringAppointments: [{ // Keep recurring embedded (small, stable)
+        room: String,
+        hour: String,
+        day: String
+    }]
 })
 
-const orderSchema = mongoose.Schema({
+const appointmentSchema = mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     room: String,
     hour: String,
-    day: String,
     date: Date,
-    user: String
+    status: String
 })
 
-const Orders = mongoose.model("Order", orderSchema)
-const Settings = mongoose.model("Settings", SettingsSchema)
 
-module.exports = {Settings, Orders}
+const users = mongoose.model("users", userSchema)
+const appointment = mongoose.model("appointment", appointmentSchema)
+
+module.exports = {users, appointment}

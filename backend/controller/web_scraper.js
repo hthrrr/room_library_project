@@ -8,7 +8,7 @@ const uniUsername = dotenv.proccess
 const orderRoom = async (roomId, unixDate) => {
     const password = process.env.UNI_PASSWORD
     const username = process.env.UNI_USERNAME
-    
+
     console.log('ordering room number - ' + roomId + "at unix time - " + unixDate)
     try {
         const browser = await puppeteer.launch({
@@ -104,10 +104,6 @@ const orderRoom = async (roomId, unixDate) => {
         console.log('Function failed with error:', error.message);
     }
 }
-
-
-const startTime = new Date('2025-06-29T13:00:00').getTime();
-console.log("start time in unix - " + startTime/1000);
 
 module.exports = orderRoom
 
